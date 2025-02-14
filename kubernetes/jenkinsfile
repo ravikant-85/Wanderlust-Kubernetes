@@ -18,5 +18,8 @@ pipeline {
                 }
             }
         }
+        stage('build a docker image') {
+                
+        }
     }
 }
