@@ -19,7 +19,9 @@ pipeline {
             }
         }
         stage('build a docker image') {
-                
+             steps{
+                    sh 'docker build -t wonderlust:v1 .'
+             }
         }
     }
 }
