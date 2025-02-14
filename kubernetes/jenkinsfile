@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone the repo from GitHub to server') {
+            steps {
+                script {
+                    def repoDir = 'Wanderlust-Kubernetes'
+                    if (fileExists(repoDir)) {
+                        echo "Directory already exists, pulling latest changes..."
+                        dir(repoDir) {
+                          //  sh 'git reset --hard'
+                            sh 'git pull origin main' // Change 'main' to your branch name
+                        }
+                    } else {
+                        echo "Cloning repository..."
+                        sh 'git clone https://github.com/ravikant-85/Wanderlust-Kubernetes.git'
+                    }
+                }
+            }
+        }
+    }
+}
